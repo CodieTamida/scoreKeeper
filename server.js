@@ -1,6 +1,6 @@
 const sqlite3 = require('sqlite3').verbose();
 
-const bodyParser = require('body-parser');
+//const bodyParser = require('body-parser');
 const express = require('express');
 
 let db = new sqlite3.Database(
@@ -17,7 +17,7 @@ let db = new sqlite3.Database(
 const app = express();
 app.use(express.json());
 app.use(express.static('./'));
-//app.use(bodyParser);
+//app.use(express.urlencoded({ extended: true }));
 app.post('/api/data', (req, res) => {
   console.log('is this running?');
   const name = req.body.name;
