@@ -1,14 +1,9 @@
-
+/*
 const sqlite3 = require('sqlite3').verbose();
 
 const bodyParser = require('body-parser');
 const express = require('express');
-
-const app = express();
-app.use(express.json());
-app.use(express.static('public'));
-app.use(bodyParser);
-
+*/
 
 let db = new sqlite3.Database('./database.db', sqlite3.OPEN_READWRITE, (err) => {
     if (err) {
@@ -16,6 +11,10 @@ let db = new sqlite3.Database('./database.db', sqlite3.OPEN_READWRITE, (err) => 
     }
     console.log('Connected to the database.db');
 })
+const app = express();
+app.use(express.json());
+app.use(express.static('./'));
+
 /*
 app.get('/init-db', (req, res) => {
     db.run('Create Table players(name)', [], (err) => {
@@ -26,10 +25,10 @@ app.get('/init-db', (req, res) => {
     })
 })
 */
-app.get('/api/data', (req, res) => {
+app.post('/api/data', (req, res) => {
     console.log("is this running?")
     const name = req.body.name;
-    console.log(name);
+    //console.log(name);
     db.run('INSERT INTO players (name) VALUES(?)', [name], function (err) {
         if (err) {
             return res.status(400).json({ error: err.message });
