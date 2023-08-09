@@ -17,7 +17,7 @@ let db = new sqlite3.Database(
 const app = express();
 app.use(express.json());
 app.use(express.static('./'));
-
+//app.use(bodyParser);
 app.post('/api/data', (req, res) => {
   console.log('is this running?');
   const name = req.body.name;
