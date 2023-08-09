@@ -11,13 +11,14 @@ let db = new sqlite3.Database(
       return console.error(err.message);
     }
     console.log('Connected to the database.db');
+    console.log("This Prints")
   }
-);
+)
 
-const app = express();
+const app = express()
 app.use(express.json());
 app.use(express.static('./'));
-//app.use(express.urlencoded({ extended: true }));
+
 app.post('/api/data', (req, res) => {
   console.log('is this running?');
   const name = req.body.name;
@@ -32,8 +33,11 @@ app.post('/api/data', (req, res) => {
     console.log('hello');
   });
 });
+app.get('/api/data', (req, res) => {
+  res.json({ message: 'ok' });
 
-const port = process.env.PORT || 5500;
+});
+const port = process.env.PORT || 5502;
 app.listen(port, () => {
   console.log(`Server running on the port: ${port}`);
 });
