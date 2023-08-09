@@ -36,15 +36,15 @@ document.getElementById('add-player-btn').addEventListener('click', () => {
     const name2 = document.getElementById('name').value;
     console.log(name2);
     fetch('/api/data', {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ name: name2 }),
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name: name2 }),
     })
-    .then(response => response.text())
-    .then(data => console.log(data))
-    .catch(error => console.error( 'Error: ', error));
+      .then((response) => response.text())
+      .then((data) => console.log(data))
+      .catch((error) => console.error('Error: ', error));
 })
 
 
