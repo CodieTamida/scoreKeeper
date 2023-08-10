@@ -1,7 +1,7 @@
 const sqlite3 = require('sqlite3').verbose();
-
-//const bodyParser = require('body-parser');
 const express = require('express');
+const cors = require('cors');
+const morgan = require('morgan')
 
 let db = new sqlite3.Database(
   './database.db',
@@ -14,17 +14,20 @@ let db = new sqlite3.Database(
     console.log("This Prints")
   }
 )
-
 const app = express()
+app.use(express.static('frontend/'));
+app.use(morgan('dev'));
 app.use(express.json());
-app.use(express.static('./'));
+app.use(cors())
 
 app.post('/api/data', (req, res) => {
   console.log('is this running?');
   const name = req.body.name;
-
-  //   res.json({ message: name });
-  //   console.log(name);
+  /*
+  db.serialize(() => {
+    db.run("CREATE TABLE IF NOT EXISTS players (name TEXT Primary KEY")
+  });
+  */
   db.run('INSERT INTO players (name) VALUES(?)', [name], function (err) {
     if (err) {
       return res.status(400).json({ error: err.message });
@@ -37,7 +40,8 @@ app.get('/api/data', (req, res) => {
   res.json({ message: 'ok' });
 
 });
-const port = process.env.PORT || 5502;
+const port = process.env.PORT || 8080;
+
 app.listen(port, () => {
   console.log(`Server running on the port: ${port}`);
 });
