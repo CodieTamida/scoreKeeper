@@ -20,28 +20,67 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(cors())
 
+app.delete('/deleteList', (req, res) => {
+  db.run('DELETE FROM player', [], (err, changes) => {
+    if (err) {
+      return res.status(400).json({ error: err.message });
+    }
+    res.json({ message: 'success', data: req.body });
+  })
+})
+
+app.delete('/delete/player/:id', (req, res) => {
+  const playerId = req.params.id;
+
+  db.run('DELETE FROM player WHERE id = ?', [playerId], (err, changes) => {
+    if (err) {
+      return res.status(400).json({ error: err.emesage});
+    }
+    res.json({ message: 'success', data: req.body })
+  })
+})
+
 app.post('/api/data', (req, res) => {
   console.log('is this running?');
-  const name = req.body.name;
+  const firstname = req.body.firstname;
+  const lastname = req.body.lastname
   /*
   db.serialize(() => {
     db.run("CREATE TABLE IF NOT EXISTS players (name TEXT Primary KEY")
   });
   */
-  db.run('INSERT INTO players (name) VALUES(?)', [name], function (err) {
+  db.run('INSERT INTO player (firstname, lastname) VALUES(?, ?)', [firstname, lastname], function (err) {
     if (err) {
       return res.status(400).json({ error: err.message });
     }
     res.json({ message: 'success', data: req.body });
     console.log('hello');
   });
-});
-app.get('/api/data', (req, res) => {
-  res.json({ message: 'ok' });
+  //db.close();
+})
 
-});
+
+app.get('/getPlayers', (req, res) => {
+  const query = "SELECT * FROM player";
+  db.all(query, [], (err, rows) => {
+    if (err) {
+      console.log(error(err.message));
+      res.status(500).send("Error feteching data");
+    }
+    res.json(rows);
+  });
+
+
+/*
+app.delete(`/getPlayers/${id}`, (req, res) => {
+  db
+})
+*/
+ // db.close();
+})
 const port = process.env.PORT || 8080;
 
 app.listen(port, () => {
   console.log(`Server running on the port: ${port}`);
 });
+

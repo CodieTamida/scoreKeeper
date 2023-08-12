@@ -1,12 +1,26 @@
-h1 {
+.title {
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+}
 
-    position: relative;
-    text-align: center;
+body {
+    background-color: #F7F7F7;
+}
+
+
+
+
+h1 {
+    color: #365A7E;
+    text-align: left;
+    font-size: 25px;
+    margin: 10px;
 
 }
 
 .sectionTwo {
-    margin-left: 5rem;
+    margin-left: 50px;
     width: 100;
 }
 
@@ -36,4 +50,12 @@ h1 {
 
 #space {
     display: block;
+}
+
+#playersTable {
+    display: block;
+    align-items: center;
+    text-align: center;
+    margin-left: 5rem;
+    
 }

@@ -8,7 +8,25 @@
     <title>Score Keeper</title>
 </head>
 <body>
-    <h1>Welcome to Your Personal Game Score Keeper!</h1>
+    <div class = "title">
+    <svg id = 'logo' width="50" height="40" viewBox="0 0 50 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g filter="url(#filter0_i_3_14)">
+        <path d="M0.5 20C0.5 11.9949 6.99489 5.5 15 5.5H35C43.0051 5.5 49.5 11.9949 49.5 20C49.5 28.0051 43.0051 34.5 35 34.5H15C6.99489 34.5 0.5 28.0051 0.5 20ZM41.3133 13.6867C40.6334 13.0069 39.7114 12.625 38.75 12.625C37.7886 12.625 36.8666 13.0069 36.1867 13.6867C35.5069 14.3666 35.125 15.2886 35.125 16.25C35.125 17.2114 35.5069 18.1334 36.1867 18.8133C36.8666 19.4931 37.7886 19.875 38.75 19.875C39.7114 19.875 40.6334 19.4931 41.3133 18.8133C41.9931 18.1334 42.375 17.2114 42.375 16.25C42.375 15.2886 41.9931 14.3666 41.3133 13.6867ZM31.1867 21.1867C30.5069 21.8666 30.125 22.7886 30.125 23.75C30.125 24.7114 30.5069 25.6334 31.1867 26.3133C31.8666 26.9931 32.7886 27.375 33.75 27.375C34.7114 27.375 35.6334 26.9931 36.3133 26.3133C36.9931 25.6334 37.375 24.7114 37.375 23.75C37.375 22.7886 36.9931 21.8666 36.3133 21.1867C35.6334 20.5069 34.7114 20.125 33.75 20.125C32.7886 20.125 31.8666 20.5069 31.1867 21.1867ZM15 13.25C13.6848 13.25 12.625 14.3098 12.625 15.625V17.625H10.625C9.3098 17.625 8.25 18.6848 8.25 20C8.25 21.3152 9.3098 22.375 10.625 22.375H12.625V24.375C12.625 25.6902 13.6848 26.75 15 26.75C16.3152 26.75 17.375 25.6902 17.375 24.375V22.375H19.375C20.6902 22.375 21.75 21.3152 21.75 20C21.75 18.6848 20.6902 17.625 19.375 17.625H17.375V15.625C17.375 14.3098 16.3152 13.25 15 13.25Z" fill="#6D86C5" stroke="#365A7E"/>
+        </g>
+        <defs>
+        <filter id="filter0_i_3_14" x="0" y="0" width="50" height="40.3125" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+        <feOffset dy="0.3125"/>
+        <feGaussianBlur stdDeviation="0.15625"/>
+        <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+        <feBlend mode="normal" in2="shape" result="effect1_innerShadow_3_14"/>
+        </filter>
+        </defs>
+        </svg><h1>YOUR GAME SCOREKEEPER</h1>
+    </div>
     <!--
     <section class = "sectionOne">
         <button class = "parameter-btn">Add parameter</button> <input type = "text" class = "parameter">   
@@ -18,8 +36,8 @@
     <br>
     <br>
     <br>
+    <h2 style = " display: block; position: relative; text-align: left; font-size: 18px; margin-left: 50px;">WELCOME TO YOUR PERSONAL GAME SCOREKEEPER</h3>
     <section class = "sectionTwo">
-        <h3>Rules and Points for Game</h3>
         <input type = "text" placeholder="Parameter" id = "param"> <input type = "number" placeholder="Enter Score Value" id = "scores">
         <button id = "add-param-btn">Add Parameter</button> <button id ="param-list-btn">List of Parameters</button>
         <div id = content></div> <div id = "space"></div> 
@@ -27,15 +45,30 @@
         <br>
         <br>
 
-        <h3>Players</h3>
-        <input id = "name" type = "text" placeholder="Enter player's name"> <button id = "add-player-btn">Add Player</button> <button id = 'allPlayers'>List of Players</button>
-
+        <h2>Players</h3>
+        <div id = name>
+        <h4>Add New Player</h3>
+        <input id = "firstname" type = "text" placeholder="Enter first name"> <input id = "lastname" type ="text" placeholder = "Enter last name"> <button id = "add-player-btn">Add Player</button>
+         <button id = "clearList"> Press to clear list of players</button> 
+        </div>
         <div id = "nameList"></div>
-        
-        
-
+       <!-- 
+       <button id = "clearList"> Press to clear list of players</button> 
+       -->
        
     </section>
+    <br>
+    <br>
+    <table id = "playersTable">
+        <thread>
+            <tr>
+                <th>Name of Players</th>
+            </tr>
+        </thread>
+        <tbody>
+
+        </tbody>
+    </table>
    
 </body>
     <script src = "script.js"></script> 

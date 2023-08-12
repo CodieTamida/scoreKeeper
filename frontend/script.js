@@ -3,18 +3,18 @@
 
 document.querySelector('#add-param-btn').addEventListener('click', () => {
     console.log("Param Button clicked")
-    var text = document.getElementById("param").value;
-    var p1 = document.createElement("p1");
-    var space = document.createElement("br")
+    let text = document.getElementById("param").value;
+    let p1 = document.createElement("p1");
+    let space = document.createElement("br")
 
-    var num = document.getElementById("scores").value;
-    var numValue = document.createElement("p1");
+    let num = document.getElementById("scores").value;
+    let numValue = document.createElement("p1");
 
     p1.textContent = text;
     numValue.textContent = num;
 
-    var newTextElement = document.createElement('pl');
-    var newText = p1.innerText + " is worth " + numValue.innerText + " points!"
+    let newTextElement = document.createElement('pl');
+    let newText = p1.innerText + " is worth " + numValue.innerText + " points!"
 
     newTextElement.textContent = newText;
     newTextElement.className= "p1";
@@ -26,26 +26,108 @@ document.querySelector('#add-param-btn').addEventListener('click', () => {
 
 document.getElementById('add-player-btn').addEventListener('click', () => {
     console.log('Add Player btn clicked')
-    var name = document.getElementById('name').value;
-    var P = document.createElement('newPlayer');
+    let firstname = document.getElementById('firstname').value;
+    let lastname = document.getElementById('lastname').value;
+    //let P = document.createElement('newPlayer');
 
-    P.textContent = name;
-    P.className = "pClass";
-    document.getElementById('nameList').appendChild(P);
+    //P.textContent = name;
+    //P.className = "pClass";
 
-    const name2 = document.getElementById('name').value;
-    console.log(name2);
+    //const firstname = document.getElementById('firstname').value;
+    console.log(firstname, lastname);
     fetch('/api/data', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name: name2 }),
+      body: JSON.stringify({ firstname: firstname, lastname: lastname, id: null}),
     })
       .then((response) => response.text())
       .then((data) => console.log(data))
       .catch((error) => console.error('Error: ', error));
+
+      
 })
+
+document.getElementById('add-player-btn').addEventListener('click', () => {
+  fetch('/getPlayers', {
+    method: 'GET',
+  })
+  .then((response) => response.json())
+  .then((data) => {
+    const lastPlayer = data[data.length - 1];
+    const tableBody = document.getElementById('playersTable').querySelector('tbody');
+
+    const row = tableBody.insertRow();
+    const cell = row.insertCell();
+
+
+
+    const editCell = row.insertCell();
+    const editButton = document.createElement('button');
+    editButton.textContent = 'Edit';
+    editCell.append(editButton);
+    const deleteCell = row.insertCell();
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete';
+    deleteButton.classList.add("del-player");
+    deleteButton.setAttribute(`data-id`, lastPlayer.id);
+    deleteCell.append(deleteButton);
+    
+    cell.textContent = `${lastPlayer.id} ${lastPlayer.firstname} ${lastPlayer.lastname}`;
+
+  })
+  .catch(error => {
+    console.error("Error fetching players");
+  })
+  
+})
+
+document.addEventListener('click', (event) => {
+  if (event.target.classList.contains('del-player')) {
+    const playerId = event.target.getAttribute('data-id');
+    fetch(`/delete/player/${playerId}`, {
+      method: 'DELETE',
+    })
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.error('error: ', error));
+  }
+  
+});
+
+
+//button to redirect to list of players
+/*
+document.getElementById('playerListPage').addEventListener('click', () => {
+  window.location.href = "/playersList.html";
+})
+*/
+document.getElementById('clearList').addEventListener('click', () => {
+  fetch('/deleteList', {
+    method: 'DELETE', 
+  })
+  .then((response) => response.json())
+  .then((data) => {console.log(data);
+  document.querySelector('#playersTable tbody').innerHTML = '';
+  })
+  .catch(error => {
+    console.error("Error deleting Table");
+  })
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*
