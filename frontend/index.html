@@ -33,23 +33,18 @@
         <button class = "score-btn">Score Value</button> <input type = "number" class = "score">
     </section>
     -->
-    <br>
-    <br>
-    <br>
-    <h2 style = " display: block; position: relative; text-align: left; font-size: 18px; margin-left: 50px;">WELCOME TO YOUR PERSONAL GAME SCOREKEEPER</h3>
+
+    <h2 style = "margin-bottom: 20px;">WELCOME TO YOUR PERSONAL GAME SCOREKEEPER</h2>
     <section class = "sectionTwo">
-        <input type = "text" placeholder="Parameter" id = "param"> <input type = "number" placeholder="Enter Score Value" id = "scores">
-        <button id = "add-param-btn">Add Parameter</button> <button id ="param-list-btn">List of Parameters</button>
+        <div id = add-new>ADD NEW PARAMETER HERE</div>
+        <input style="width: 200px; height: 30px; border-radius: 5px;" type = "text" placeholder="ADD PARAMETER" id = "param">    <input style="width: 200px; height: 30px; border-radius: 5px;" type = "number" placeholder="ADD VALUE" id = "scores">
+        <button id = "add-param-btn">SAVE</button> <!--<button id ="param-list-btn">List of Parameters</button>-->
         <div id = content></div> <div id = "space"></div> 
 
-        <br>
-        <br>
-
-        <h2>Players</h3>
         <div id = name>
-        <h4>Add New Player</h3>
-        <input id = "firstname" type = "text" placeholder="Enter first name"> <input id = "lastname" type ="text" placeholder = "Enter last name"> <button id = "add-player-btn">Add Player</button>
-         <button id = "clearList"> Press to clear list of players</button> 
+        <div id = add-new>ADD NEW PLAYER HERE</div>
+        <input style="width: 200px; height: 30px; border-radius: 5px;" id = "firstname" type = "text" placeholder="ADD FIRST NAME">    <input style="width: 200px; height: 30px; border-radius: 5px;" id = "lastname" type ="text" placeholder = "ADD LAST NAME"> <button id = "add-player-btn">SAVE</button>
+         <button id = "clearList">PRESS TO CLEAR PLAYER LIST</button> 
         </div>
         <div id = "nameList"></div>
        <!-- 
@@ -59,12 +54,23 @@
     </section>
     <br>
     <br>
+    <div class = "add-score">
+        <div id="add-new">ADD SCORE</div>
+        <form id = "playerSelect">
+            <select name ="playersDrop" id = "playersDrop">
+                <option value ="" disabled selected>SELECT PLAYERS</option>
+            </select>
+            </label>
+        </form>
+    </div>
+    <h2>LIST OF ALL PLAYERS</h2>
     <table id = "playersTable">
-        <thread>
-            <tr>
-                <th>Name of Players</th>
-            </tr>
-        </thread>
+        
+        <tr>
+            <th  colspan = "3" id = "player-col">PLAYER</th>
+            <th id = "score-col">TOTAL SCORE</th>
+            
+        </tr>   
         <tbody>
 
         </tbody>

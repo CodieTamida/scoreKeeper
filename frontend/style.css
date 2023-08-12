@@ -1,10 +1,11 @@
 .title {
     display: flex;
     align-items: center;
-    margin-left: 50px;
+    /*margin-left: 50px;*/
 }
 
 body {
+    margin: 50px;
     background-color: #F7F7F7;
 }
 
@@ -15,13 +16,57 @@ h1 {
     color: #365A7E;
     text-align: left;
     font-size: 25px;
-    margin: 10px;
+    margin-left: 5px;
+    /*margin: 10px;*/
 
 }
 
+h2 {
+    display:flex;
+    color: #5A5A5A;
+    text-align: left;
+    font-size: 18px;
+    /*display: flex;
+    position: relative;*/
+    
+    
+}
+
+#add-new {
+    display: flex;
+    font-size: 16px;
+}
 .sectionTwo {
-    margin-left: 50px;
+    /*margin-left: 50px;*/
     width: 100;
+}
+
+#add-player-btn {
+    width: 100px;
+    height: 30px;
+    background-color: #5A5A5A;
+    color: #FFFFFF;
+    border-radius: 5px;
+}
+
+#clearList {
+    width: 250px;
+    height: 30px;
+    background-color: #5A5A5A;
+    color: #FFFFFF;
+    border-radius: 5px;  
+}
+
+#name {
+    margin-top: 20px;
+}
+#add-param-btn {
+    width: 100px;
+    height: 30px;
+    background-color: #5A5A5A;
+    color: #FFFFFF;
+    border-radius: 5px;
+    
 }
 
 #content {
@@ -53,9 +98,37 @@ h1 {
 }
 
 #playersTable {
-    display: block;
-    align-items: center;
-    text-align: center;
-    margin-left: 5rem;
+    table-layout: fixed;    
+    /*text-align: left;*/
+    width: 100%
     
+}
+
+#player-col {
+    width: 300px;
+    text-align: left; 
+    font-size: 14px;
+}
+#score-col {
+    width: 300px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.custom-cell {
+    padding: 5px;
+    color: red;
+}
+
+td {
+   width: 5px;
+   color: red;
+}
+
+::placeholder {
+    font-size: 12px;
+}
+
+::-webkit-input-placeholder {
+    font-size: 12px;
 }
