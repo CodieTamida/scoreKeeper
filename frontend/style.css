@@ -104,19 +104,36 @@ h2 {
     
 }
 
+tr.custom-row {
+    border-spacing: 0px;
+}
+
+tr:nth-child(even) {
+    background-color: #FFFFFF;
+}
+
+tr:nth-child(odd) {
+    background-color: #F3F3F3;
+}
+
 #player-col {
     width: 300px;
     text-align: left; 
     font-size: 14px;
+    color:#FFFFFF;
+    background-color: #9B9A9A;
 }
 #score-col {
-    width: 300px;
+    display:flex;
+    width: 100px;
     text-align: left;
     font-size: 14px;
+    color:#FFFFFF;
+    background-color: #9B9A9A;
 }
 
 .custom-cell {
-    padding: 5px;
+    padding: 0px;
     color: red;
 }
 

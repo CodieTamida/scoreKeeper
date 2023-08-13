@@ -49,6 +49,22 @@ document.getElementById('add-player-btn').addEventListener('click', () => {
       
 })
 
+document.getElementById('add-param-btn').addEventListener('click', () => {
+  let parameter = document.getElementById('param').value;
+  let score = document.getElementById('scores').value;
+  console.log(param, score);
+
+  fetch('/api/rules', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ parameter: parameter, score: score, rid: null}),
+  })
+    .then((response) => response.text())
+    .then((data) => console.log(data))
+    .catch((error) => console.error('Error: ', error));
+})
 document.getElementById('add-player-btn').addEventListener('click', () => {
   fetch('/getPlayers', {
     method: 'GET',
