@@ -41,10 +41,9 @@ app.delete('/delete/player/:id', (req, res) => {
 })
 
 app.post('/api/rules', (req, res) => {
-  //const param = req.body.param;
   const parameter = req.body.parameter;
   const score = req.body.score;
-  //console.log(param);
+
   console.log(parameter);
   db.run('INSERT INTO rules (parameter, score) VALUES (?, ?)', [parameter, score], (err) => {
     if (err) {
@@ -70,7 +69,6 @@ app.post('/api/data', (req, res) => {
     res.json({ message: 'success', data: req.body });
     console.log('hello');
   });
-  //db.close();
 })
 
 

@@ -1,6 +1,5 @@
 'use strict'
 
-
 document.querySelector('#add-param-btn').addEventListener('click', () => {
     console.log("Param Button clicked")
     let text = document.getElementById("param").value;
@@ -45,8 +44,6 @@ document.getElementById('add-player-btn').addEventListener('click', () => {
       .then((response) => response.text())
       .then((data) => console.log(data))
       .catch((error) => console.error('Error: ', error));
-
-      
 })
 
 document.getElementById('add-param-btn').addEventListener('click', () => {
@@ -80,8 +77,6 @@ document.getElementById('add-player-btn').addEventListener('click', () => {
     row.setAttribute('data-id', lastPlayer.id);
     row.classList.add('custom-row');
     cell.classList.add('custom-cell');
-
-
 
     const editCell = row.insertCell();
     const editButton = document.createElement('button');
@@ -118,8 +113,6 @@ document.getElementById('add-player-btn').addEventListener('click', () => {
     console.error("Error fetching players");
   })
 })
-  
-
 
 document.addEventListener('click', (event) => {
   if (event.target.classList.contains('del-player')) {
@@ -140,22 +133,11 @@ document.addEventListener('click', (event) => {
         tr.remove();
       }
       console.log(tr);
-      
-     
-      
     })
     .catch((error) => console.error('error: ', error));
   }
-  
 });
 
-
-//button to redirect to list of players
-/*
-document.getElementById('playerListPage').addEventListener('click', () => {
-  window.location.href = "/playersList.html";
-})
-*/
 document.getElementById('clearList').addEventListener('click', () => {
   fetch('/deleteList', {
     method: 'DELETE', 
@@ -163,8 +145,17 @@ document.getElementById('clearList').addEventListener('click', () => {
   .then((response) => response.json())
   .then((data) => {console.log(data);
   const tds = document.querySelectorAll('#playersTable td');
+  const option = document.querySelectorAll(`option`);
+  option.forEach(option => {
+    if (!option.disabled) {
+      option.remove();
+    }
+    
+  })
   tds.forEach(td => {
     td.innerHTML = '';
+
+  
   })
   })
   .catch(error => {
@@ -172,22 +163,3 @@ document.getElementById('clearList').addEventListener('click', () => {
   })
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-document.getElementById('allPlayers').addEventListener('click', () => {
-    fetch('')
-})
-*/
