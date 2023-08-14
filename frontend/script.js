@@ -127,12 +127,18 @@ document.addEventListener('click', (event) => {
       //const delDrop = document.getElementById('playersDrop');//.querySelector('option');
       const delDrop = document.getElementById('playersDrop').querySelector(`option[data-id = "${playerId}"]`);
       
-      console.log(delDrop);
-      delDrop.remove();
+      //console.log(delDrop);
+      //delDrop.remove();
       if (tr) {
         tr.remove();
+        //delDrop.remove();
       }
-      console.log(tr);
+      //console.log(td);
+      if (delDrop) {
+        delDrop.remove();
+      }
+      //delDrop.remove();
+      //console.log(tr);
     })
     .catch((error) => console.error('error: ', error));
   }
@@ -144,7 +150,7 @@ document.getElementById('clearList').addEventListener('click', () => {
   })
   .then((response) => response.json())
   .then((data) => {console.log(data);
-  const tds = document.querySelectorAll('#playersTable td');
+  const td = document.querySelectorAll('tr.custom-row');
   const option = document.querySelectorAll(`option`);
   option.forEach(option => {
     if (!option.disabled) {
@@ -152,12 +158,16 @@ document.getElementById('clearList').addEventListener('click', () => {
     }
     
   })
-  tds.forEach(td => {
-    td.innerHTML = '';
-
+  //console.log(tr);
+  if (td) {
+    td.forEach(td => {
+      td.remove();
   
-  })
-  })
+    
+    })
+  }
+})
+  
   .catch(error => {
     console.error("Error deleting Table");
   })
